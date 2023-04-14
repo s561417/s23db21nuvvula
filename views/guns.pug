@@ -3,11 +3,11 @@ extends layout
 
 block content
  h1= title
-  - let results = [{guns_color:"Black",guns_range:"600",guns_cost:"$1800"},{guns_color:"brown",guns_range:"700",guns_cost:"$2500"},{guns_color:"gray",guns_range:"500",guns_cost:"$2200"}]
+  //- let results = results;
   div(class="container-fluid")
      div(class="row")
-       each item,index in results
-       div(class="col-sm-2", onClick=`buy(${index})`)
+       each item,index in guns
+        div(class="col-sm-2", onClick=`buy(${index})`)
         p Color is #{item.guns_color}
         p range is #{item.guns_range}
         p Cost is #{item.guns_cost}
