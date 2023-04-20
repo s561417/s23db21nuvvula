@@ -1,0 +1,20 @@
+extends layout
+block content
+ h1= title
+ - let gunsid = toShow._id
+ - let guns_color = toShow.guns_color
+ - let guns_range = toShow.guns_range
+ - let guns_cost = toShow.guns_cost
+ div
+  div.row
+   div(class='gunsAttr mr-3') guns id is:
+   div #{gunsid}
+  div.row
+   div(class='gunsAttr mr-3') guns color is:
+   div #{guns_color}
+  div.row
+   div(class='gunsAttr mr-3') guns range is:
+   div #{guns_range}
+  div.row
+   div(class='gunsAttr mr-3') guns cost is:
+   div #{guns_cost}

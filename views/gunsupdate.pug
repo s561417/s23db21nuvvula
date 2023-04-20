@@ -1,0 +1,39 @@
+extends layout
+block content
+ h1= title
+  - let gunsid = toShow._id
+  - let guns_color = toShow.guns_color
+  - let guns_range = toShow.guns_range
+  - let guns_cost = toShow.guns_cost
+  div.row(class='mb-2')
+   div.mr-1 ID is
+   div #{gunsid}
+  - let actionid = "/resource/guns/" + gunsid
+  form(id='gunsForm', action= actionid, method="PUT")
+   div.form-group
+     label.gunsAttr(for='guns_color') guns color
+     input#guns_color(type='text', name='guns_color', value= guns_color )
+   div.form-group
+     label.gunsAttr(for='guns_range') guns range
+     input#guns_range(type='number', name='guns_range', value= guns_range )
+   div.form-group
+     label.gunsAttr(for='guns_cost') guns cost
+     input#guns_cost(type='number', name='guns_cost', value= guns_cost )
+   input(type="submit")
+  script.
+   document.forms['gunsForm'].addEventListener('submit', (event) => {
+    event.preventDefault();
+    // TODO do something here to show user that form is being submitted
+    fetch(event.target.action, {
+     method: 'PUT',
+     body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+    }).then((resp) => {
+     return resp.json(); // or resp.text() or whatever the server sends
+    }).then((body) => {
+     alert("Update succeded")
+     // TODO handle body
+    }).catch((error) => {
+     // TODO handle error
+     alert("Update failed " + error )
+    });
+   });
