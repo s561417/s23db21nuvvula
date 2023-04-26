@@ -18,7 +18,7 @@ block content
      input#guns_range(type='number', name='guns_range', value= guns_range )
    div.form-group
      label.gunsAttr(for='guns_cost') guns cost
-     input#guns_cost(type='number', name='guns_cost', value= guns_cost )
+     input#guns_cost(type='number', name='guns_cost', value= guns_cost,min=03,max=3333 )
    input(type="submit")
   script.
    document.forms['gunsForm'].addEventListener('submit', (event) => {

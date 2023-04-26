@@ -4,6 +4,7 @@ extends layout
 block content
  h1= title
   //- let results = results;
+  button.btn( class="btn-success ml-1", onclick= `dispatch(\"/guns/create?\")`) Create
   div(class="container-fluid")
      div(class="row")
        each item,index in guns
@@ -13,7 +14,9 @@ block content
          p range is #{item.guns_range}
          p Cost is #{item.guns_cost}
 
-        button.btn( class="btn-primary ml-1", onclick= destination) Update
+        button.btn( class="btn-secondary ml-1", onclick= destination) Update
+        button.btn( class="btn-info ml-1", onclick= `dispatch(\"/guns/detail?id=${item._id}\")`) Detail
+        button.btn( class="btn-warning ml-1", onclick= `dispatch(\"/guns/delete?id=${item._id}\")`) Delete
   script.
    function dispatch(path){
     window.location.href=path
